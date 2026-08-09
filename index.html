@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,17 +20,35 @@
         </header>
 
         <section class="task-input">
-            <input
-                type="text"
-                id="taskInput"
-                placeholder="Enter a new task"
-            >
+            <input type="text" id="taskInput" placeholder="Enter a new task">
 
             <button id="addTaskBtn">
                 Add Task
             </button>
         </section>
+        <section class="filters">
 
+            <button class="filter active" data-filter="all">
+                All
+            </button>
+
+            <button class="filter" data-filter="pending">
+                Pending
+            </button>
+
+            <button class="filter" data-filter="completed">
+                Completed
+            </button>
+
+        </section>
+
+        <section class="task-info">
+
+            <span id="taskCount">
+                0 pending tasks
+            </span>
+
+        </section>
         <section id="taskArea">
 
             <ul id="taskList"></ul>
@@ -41,4 +60,5 @@
     <script src="script.js"></script>
 
 </body>
+
 </html>

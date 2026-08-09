@@ -1,3 +1,7 @@
+const taskCount = document.getElementById("taskCount");
+const filterButtons = document.querySelectorAll(".filter");
+let currentFilter = "all";
+
 const taskInput = document.getElementById("taskInput");
 const addTaskBtn = document.getElementById("addTaskBtn");
 const taskList = document.getElementById("taskList");
@@ -48,7 +52,17 @@ function toggleTask(id) {
 function renderTasks() {
     taskList.innerHTML = "";
 
-    tasks.forEach(task => {
+    let filteredTasks = tasks;
+
+    if (currentFilter === "pending") {
+        filteredTasks = tasks.filter(task => !task.completed);
+    }
+
+    if (currentFilter === "completed") {
+        filteredTasks = tasks.filter(task => task.completed);
+    }
+
+    filteredTasks.forEach(task => {
 
         const li = document.createElement("li");
 
@@ -70,6 +84,7 @@ function renderTasks() {
 
         taskList.appendChild(li);
     });
+    updateTaskCount();
 }
 
 addTaskBtn.addEventListener("click", addTask);
@@ -81,3 +96,30 @@ taskInput.addEventListener("keydown", event => {
 });
 
 renderTasks();
+
+filterButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        filterButtons.forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        currentFilter = button.dataset.filter;
+
+        renderTasks();
+    });
+
+});
+
+function updateTaskCount() {
+
+    const pendingTasks =
+        tasks.filter(task => !task.completed).length;
+
+    taskCount.textContent =
+        `${pendingTasks} pending task${pendingTasks !== 1 ? "s" : ""}`;
+}
+
