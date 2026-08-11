@@ -7,16 +7,23 @@
 body {
     font-family: Arial, sans-serif;
     background: #f4f6f8;
+    color: #222;
+    min-height: 100vh;
 }
+
+/* Main application container */
 
 .container {
     width: 90%;
     max-width: 700px;
     margin: 50px auto;
-    padding: 30px;
     background: white;
-    border-radius: 10px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
+
+/* Header */
 
 header {
     text-align: center;
@@ -24,41 +31,161 @@ header {
 }
 
 header h1 {
+    color: #333;
     margin-bottom: 8px;
 }
 
 header p {
-    color: #666;
+    color: #777;
 }
+
+/* Input area */
 
 .task-input {
     display: flex;
     gap: 10px;
+    margin-bottom: 20px;
 }
 
 .task-input input {
     flex: 1;
     padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
 }
 
-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.task-input input:focus {
+    border-color: #333;
 }
+
+/* General buttons */
+
+button {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+/* Add button */
+
+#addTaskBtn {
+    background: #333;
+    color: white;
+}
+
+/* Filters */
+
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.filter {
+    background: #e9ecef;
+    color: #333;
+}
+
+.filter.active {
+    background: #333;
+    color: white;
+}
+
+/* Task counter */
+
+.task-info {
+    margin-bottom: 15px;
+    color: #666;
+}
+
+/* Task list */
 
 #taskList {
     list-style: none;
-    margin-top: 20px;
 }
+
+/* Individual task */
 
 .task {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 12px;
-    margin-bottom: 10px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    background: #fafafa;
+}
+
+/* Completed task */
+
+.task.completed span {
+    text-decoration: line-through;
+    color: #888;
+}
+
+/* Complete button */
+
+.complete-btn {
+    background: #28a745;
+    color: white;
+    margin-right: 5px;
+}
+
+/* Delete button */
+
+.delete-btn {
+    background: #dc3545;
+    color: white;
+}
+
+/* Mobile responsive design */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 95%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .task-input {
+        flex-direction: column;
+    }
+
+    .task-input button {
+        width: 100%;
+    }
+
+    .filters {
+        flex-wrap: wrap;
+    }
+
+    .filter {
+        flex: 1;
+    }
+
+    .task {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .task div {
+        width: 100%;
+    }
+
+    .complete-btn,
+    .delete-btn {
+        width: 48%;
+    }
 }

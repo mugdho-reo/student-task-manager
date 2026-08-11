@@ -72,13 +72,20 @@ function renderTasks() {
             <span>${task.text}</span>
 
             <div>
-                <button onclick="toggleTask(${task.id})">
+                <button
+                     class="complete-btn"
+                     onclick="toggleTask(${task.id})"
+                >
                     ${task.completed ? "Undo" : "Complete"}
                 </button>
 
-                <button onclick="deleteTask(${task.id})">
-                    Delete
+                <button
+                    class="delete-btn"
+                     onclick="deleteTask(${task.id})"
+                >
+                     Delete
                 </button>
+
             </div>
         `;
 
